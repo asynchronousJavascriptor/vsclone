@@ -27,16 +27,21 @@
         <form id="folderform" action="/createfolder">
           <input type="text" name="foldername" placeholder="foldername">
         </form>
-        <% files.forEach(function(val){ %>
+        <% elem.forEach(function(el){ %>
           <div class="elem">
-            <% if(val.isDirectory()){ %>
-              <i class="ri-folder-line"></i>
-              <%= val.name %>
-            <% } else { %>
-              <i class="ri-file-3-line"></i>
-              <%= val.name %>
-            <% } %>
-
+            <div class="elleft">
+              <% if(el.isDirectory()){ %>
+                <i class="ri-folder-line"></i>
+                <%= el.name %>
+              <% } else { %>
+                <i class="ri-file-3-line"></i>
+                <%= el.name %>
+              <% } %>
+            </div>
+            <div class="elright">
+              <i class="ri-pencil-fill"></i>
+              <a href="/delete/<%= el.name %>"><i class="ri-delete-bin-7-line"></i></a>
+            </div>
           </div>
         <% }) %>
       </div>
@@ -48,24 +53,24 @@
 
   <script>
 
-    function donoOffKaro(){
+    function donoOffKaro() {
       document.querySelectorAll("#files form")
-      .forEach(function(frm){
-        frm.style.display = "none";
-      })
+        .forEach(function (frm) {
+          frm.style.display = "none";
+        })
     }
 
     document.querySelector("#fileicon")
-    .addEventListener("click", function(){
-      donoOffKaro();
-      document.querySelector("#fileform").style.display = "block";
-    });
+      .addEventListener("click", function () {
+        donoOffKaro();
+        document.querySelector("#fileform").style.display = "block";
+      });
 
     document.querySelector("#foldericon")
-    .addEventListener("click", function(){
-      donoOffKaro();
-      document.querySelector("#folderform").style.display = "block";
-    });
+      .addEventListener("click", function () {
+        donoOffKaro();
+        document.querySelector("#folderform").style.display = "block";
+      });
   </script>
 </body>
 

@@ -3,8 +3,14 @@ var router = express.Router();
 const fs = require("fs");
 
 router.get('/', function(req, res) {
-  fs.readdir(`./uploads`, {withFileTypes: true}, function(err, files){
-    res.render("index", {files})
+  fs.readdir(`./uploads`, {withFileTypes: true}, function(err, elem){
+    res.render("index", {elem})
+  })
+});
+
+router.get('/delete/:filename', function(req, res) {
+  fs.unlink(`./uploads/${req.params.filename}`, function(err){
+    res.redirect("back");
   })
 });
 

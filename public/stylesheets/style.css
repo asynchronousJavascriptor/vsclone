@@ -42,6 +42,8 @@ html,body{
 }
 
 #files .elem{
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 15px;
   display: flex;
   gap: 10px;
@@ -78,4 +80,17 @@ html,body{
   border-radius: 5px;
   outline-color: royalblue;
   border: 2px solid #f3f3f3;
+}
+
+.elright{
+  display: flex;
+  gap: 15px;
+}
+
+.elem:hover i{
+  opacity: 1;
+}
+
+.elright i{
+  opacity: 0;
 }

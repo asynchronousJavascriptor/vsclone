@@ -27,14 +27,18 @@
         <form id="folderform" action="/createfolder">
           <input type="text" name="foldername" placeholder="foldername">
         </form>
-        <div class="elem">
-          <i class="ri-folder-line"></i>
-          images
-        </div>
-        <div class="elem">
-          <i class="ri-file-3-line"></i>
-          index.html
-        </div>
+        <% files.forEach(function(val){ %>
+          <div class="elem">
+            <% if(val.isDirectory()){ %>
+              <i class="ri-folder-line"></i>
+              <%= val.name %>
+            <% } else { %>
+              <i class="ri-file-3-line"></i>
+              <%= val.name %>
+            <% } %>
+
+          </div>
+        <% }) %>
       </div>
     </div>
     <div id="right">

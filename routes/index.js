@@ -8,10 +8,23 @@ router.get('/', function(req, res) {
   })
 });
 
-router.get('/delete/:filename', function(req, res) {
-  fs.unlink(`./uploads/${req.params.filename}`, function(err){
-    res.redirect("back");
+router.get('/file/:filename', function(req, res) {
+  fs.readdir(`./uploads`, {withFileTypes: true}, function(err, elem){
+    res.render("opened", {elem});
   })
+});
+
+router.get('/delete/:type/:filename', function(req, res) {
+  if(req.params.type === "folder"){
+    fs.rmdir(`./uploads/${req.params.filename}`, function(err){
+      res.redirect("back");
+    })
+  }
+  else{
+    fs.unlink(`./uploads/${req.params.filename}`, function(err){
+      res.redirect("back");
+    })
+  }
 });
 
 router.get('/createfile', function(req, res) {

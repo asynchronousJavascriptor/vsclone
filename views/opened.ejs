@@ -17,7 +17,7 @@
         <div id="icons">
           <i id="fileicon" class="ri-add-line"></i>
           <i id="foldericon" class="ri-folder-fill"></i>
-          <i class="ri-refresh-line"></i>
+          <a href="/back"><i class="ri-refresh-line"></i></a>
         </div>
       </div>
       <div id="files">
@@ -54,10 +54,10 @@
     </div>
     <div id="right">
         <div class="rnav">
-            <div class="file">index.html <i class="ri-close-line"></i></div>
+            <div class="file"><%= filename %> <a href="/"><i class="ri-close-line"></i></div></a>
         </div>
-        <form action="">
-            <textarea style="resize: none;"></textarea>
+        <form action="/update/<%= filename %>" method="post">
+            <textarea name="data" style="resize: none;"><%= filedata %></textarea>
             <input id="submitbtn" type="submit" value="Save File">
         </form>
     </div>

@@ -8,9 +8,21 @@ router.get('/', function(req, res) {
   })
 });
 
+router.get('/back', function(req, res) {
+  res.redirect("back")
+});
+
 router.get('/file/:filename', function(req, res) {
   fs.readdir(`./uploads`, {withFileTypes: true}, function(err, elem){
-    res.render("opened", {elem});
+    fs.readFile(`./uploads/${req.params.filename}`, "utf8", function(err, filedata){
+      res.render("opened", {elem, filename: req.params.filename, filedata});
+    })
+  })
+});
+
+router.post('/update/:filename', function(req, res) {
+  fs.writeFile(`./uploads/${req.params.filename}`, req.body.data, function(err){
+    res.redirect("back");
   })
 });
 

@@ -56,7 +56,7 @@ html,body{
 }
 
 #right{
-  position: relative;/
+  position: relative;
 }
 
 #right small{
@@ -141,4 +141,50 @@ textarea{
   top: 1%;
   right: 3%;
   padding: 10px 15px;
+}
+
+#popup{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.33);
+}
+
+#popupcard{
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  background-color: #fff;
+}
+
+#popupcard h3{
+  margin-bottom: 10px;
+}
+
+#popupcard hr{
+  opacity: .2;
+}
+
+#popupcard form input{
+  width: 100%;
+  font-weight: 600;
+  padding: 13px 20px;
+  border-radius: 5px;
+  outline-color: royalblue;
+  border: 2px solid #dadada;
+  margin-top: 10px;
+}
+
+#popupcard #submit{
+  background-color: royalblue;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
 }

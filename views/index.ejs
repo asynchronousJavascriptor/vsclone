@@ -11,6 +11,16 @@
 
 <body>
   <div id="main">
+    <div id="popup">
+      <div id="popupcard">
+        <h3>Change Name</h3>
+        <hr>
+        <form action="" method="post">
+          <input id="inp" type="text">
+          <input name="newname" id="submit" type="submit" value="Change Karo">
+        </form>
+      </div>
+    </div>
     <div id="left">
       <div id="filedets">
         <h3>Folder Name</h3>
@@ -32,16 +42,16 @@
             <div class="elleft">
               <% if(el.isDirectory()){ %>
                 <i class="ri-folder-line"></i>
-                <%= el.name %>
+                  <%= el.name %>
               <% } else { %>
                 <a href="/file/<%= el.name %>">
                   <i class="ri-file-3-line"></i>
-                  <%= el.name %>
+                    <%= el.name %>
                 </a>
               <% } %>
             </div>
             <div class="elright">
-              <i class="ri-pencil-fill"></i>
+              <i id="edit" class="ri-pencil-fill"></i>
               <% if(el.isDirectory()){ %>
                 <a href="/delete/folder/<%= el.name %>"><i class="ri-delete-bin-7-line"></i></a>
               <% } else { %>
@@ -58,13 +68,20 @@
   </div>
 
   <script>
-
     function donoOffKaro() {
       document.querySelectorAll("#files form")
         .forEach(function (frm) {
           frm.style.display = "none";
         })
     }
+
+    document.querySelector("#files")
+    .addEventListener("click", function(dets){
+      if(dets.target.id === "edit"){
+        document.querySelector("#inp").value = dets.srcElement.parentElement.parentElement.textContent.trim();
+        document.querySelector("#popup").style.display = "flex";
+      }
+    })
 
     document.querySelector("#fileicon")
       .addEventListener("click", function () {
